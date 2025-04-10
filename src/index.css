@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* theme دي بدل ال configrations  */
+/* كدا عملت custome class  */
+
+@theme {
+  --color-primary: #7a294a;
+  --color-secondary: #0c415a;
+}
+body {
+  font-family: "Roboto", "sans-serif";
+}
