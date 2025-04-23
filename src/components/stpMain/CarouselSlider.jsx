@@ -1,37 +1,37 @@
 "use client"
 
 import {useState} from "react"
-import {motion, AnimatePresence} from "framer-motion"
+import {motion} from "framer-motion"
 import {ChevronLeft, ChevronRight} from "lucide-react"
-import Slider1 from "../assets/Slider1.png"
-import Slider2 from "../assets/Slider2.png"
-import Slider3 from "../assets/Slider3.png"
+import Slider1 from "../../assets/Slider1.png"
+import Slider2 from "../../assets/Slider2.png"
+import Slider3 from "../../assets/Slider3.png"
 // Sample data - replace with your actual data
 const slides = [
     {
         id: 1,
         image: Slider1,
-        title: "Borem ipsum dolor sit amet consectetur 111111",
+        title: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. 1",
     },
     {
         id: 2,
         image: Slider2,
-        title: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. 222222",
+        title: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. 2",
     },
     {
         id: 3,
         image: Slider3,
-        title: "Borem ipsum dolor sit amet consectetur 3333333",
+        title: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. 3",
     },
     {
         id: 4,
         image: Slider1,
-        title: "New Slide Example 4444444 ",
+        title: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. 4 ",
     },
     {
         id: 5,
         image: Slider2,
-        title: "New Slide Example 5555555",
+        title: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. 5",
     }
 
 ]
@@ -72,8 +72,8 @@ export default function CarouselSlider () {
         },
         exit: (direction) => ({
             x: direction < 0 ? 300 : -300,
-            opacity: 0,
-            scale: 0.8,
+            opacity: 0.9,
+            scale: 0,
             transition: {
                 x: {type: "spring", stiffness: 300, damping: 30},
                 opacity: {duration: 0.3},
@@ -90,7 +90,7 @@ export default function CarouselSlider () {
             x: 0,
         },
         animate: {
-            scale: 1.2,
+            scale: 1.09,
             opacity: 1,
             transition: {
                 scale: {duration: 0.4, ease: "easeOut"},
@@ -169,29 +169,33 @@ export default function CarouselSlider () {
                                     initial="initial"
                                     animate="animate"
                                     exit="exit"
-                                    className={`rounded-lg  border bg-white mx-auto ${ isCenter
+                                    className={`rounded-lg w-fit py-5 px-3 border bg-white mx-auto ${ isCenter
                                         ? "border-secondary border-2 shadow-lg"
                                         : "border-gray-200"
                                         } p-4`}
                                 >
-                                    <div className="w-fit mx-auto">
+                                    <div className=" w-fit mx-auto">
                                         <motion.img
                                             src={slide.image || "/placeholder.svg"}
                                             alt={slide.title}
-                                            className="w-full object-cover rounded-md mb-4"
-
+                                            className="w-fit object-cover  rounded-md mb-4"
                                         />
                                     </div>
 
-                                    <h3 className="text-lg font-medium text-gray-800 mb-4">
+                                    <h3 className="  text-lg font-medium  text-gray-800 ">
                                         {slide.title}
                                     </h3>
-                                    <motion.button
-                                        className="px-6 py-2 bg-primary text-white rounded-full hover:bg-[#6d1a37] transition-colors"
 
-                                    >
-                                        See more
-                                    </motion.button>
+                                    <div className="w-full flex justify-end">
+
+                                        <motion.button
+                                            className="px-6 py-2 bg-primary text-white rounded-full hover:bg-[#6d1a37] transition-colors "
+
+                                        >
+                                            See more
+                                        </motion.button>
+                                    </div>
+
                                 </motion.div>)
                         })}
                     </div>

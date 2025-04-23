@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7a294a;
+  --color-primary-200: #99335c;
+  --color-primary-300: #bf4073;
+  --color-secondary: #0c415a;
+  --color-secondary-200: #0f5270;
+  --color-secondary-300: #126287;
+  --color-blur: #dadada80;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 5rem;
+}
+
+:root {
+  font-family: "Roboto", "sans-serif";
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media screen and (min-width: 769px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1250px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.testimonials-text,
+.testimonials-img,
+.testimonials-p {
+  position: relative;
+}
+
+.testimonials-img::before {
+  content: url(./assets/Mainstar.png);
+  position: absolute;
+  top: -35px;
+  left: -25px;
+}
+
+.testimonials-text::after {
+  content: url(./assets/Mainstar2.png);
+  position: absolute;
+  bottom: -35px;
+}
+
+.testimonials-p::before {
+  content: url(./assets/Mainstar3.svg);
+  position: absolute;
+  bottom: 15px;
+  right: -25px;
+}
+
+.hero {
+  background-image: url(./assets//Hero.jpeg);
+}
+
+.footer-ul ul li {
+  padding-bottom: 20px;
+}
+
+.footer-b,
+.footer-t {
+  position: relative;
+}
+
+.footer-b::before {
+  content: url(./assets/footerCer1.svg);
+  position: absolute;
+  top: 30%;
+  right: 20%;
+}
+.footer-b::after {
+  content: url(./assets/footerCer2.svg);
+  position: absolute;
+  top: 35px;
+  right: 5%;
+}
+
+.footer-t::before {
+  content: url(./assets/footerCer2.svg);
+  position: absolute;
+  top: 25%;
+  right: 20%;
+}
+.footer-t::after {
+  content: url(./assets/footerCer1.svg);
+  position: absolute;
+  top: 20%;
+  right: 5%;
+}
