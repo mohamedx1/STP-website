@@ -2,7 +2,7 @@ import backgroundImage from "../../../assets/Hero.jpeg"
 
 function HeroSection () {
     return (
-        <div className="relative z-10 h-screen  hero flex items-center bg-cover bg-center " style={{backgroundImage: `url(${ backgroundImage })`}}>
+        <div className="relative z-10 h-svh  hero flex items-center bg-cover bg-center " style={{backgroundImage: `url(${ backgroundImage })`}}>
             <main className="  md:container ">
                 <section className="max-w-2xl   ">
                     <h1 className="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">

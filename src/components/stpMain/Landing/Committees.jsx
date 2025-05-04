@@ -2,10 +2,10 @@
 
 import {useState} from "react"
 import {ChevronLeft, ChevronRight} from "lucide-react"
-import {motion, AnimatePresence} from "framer-motion"
-import CommitteesImg from "../../assets/Committees.png"
-import podcast from "../../assets/podcast.png"
-// Sample data for committees tab - each slide has its own unique image
+import {motion, AnimatePresence, useInView} from "framer-motion"
+import CommitteesImg from "../../../assets/Committees.png"
+import podcast from "../../../assets/podcast.png"
+import {useRef} from "react";
 
 
 
@@ -109,7 +109,8 @@ const rightContent = {
 
 export default function FeaturedContent () {
     const [activeTab, setActiveTab] = useState("committees")
-
+    const ref = useRef(null);
+    const isInView = useInView(ref, {once: true});
     // Separate current slide state for each tab
     const [committeeSlideIndex, setCommitteeSlideIndex] = useState(0)
     const [podcastSlideIndex, setPodcastSlideIndex] = useState(0)
@@ -171,7 +172,7 @@ export default function FeaturedContent () {
                             <button
                                 key={tab.id}
                                 onClick={() => handleTabChange(tab.id)}
-                                className={`px-8 py-3 rounded-full text-base font-medium transition-colors ${ activeTab === tab.id ? "bg-[#8e2249] text-white" : "bg-white text-[#0a3b4a] border border-gray-300"
+                                className={`px-8 py-3 rounded-full text-base font-medium transition-colors ${ activeTab === tab.id ? "bg-primary text-white" : "bg-white text-secondary border border-gray-300"
                                     }`}
                             >
                                 {tab.label}
@@ -180,7 +181,7 @@ export default function FeaturedContent () {
                     </div>
 
                     {/* Featured Card */}
-                    <div className="relative rounded-lg overflow-hidden bg-[#0a3b4a] text-white">
+                    <div className="relative rounded-lg overflow-hidden bg-secondary text-white">
                         <div className="flex flex-col md:flex-row">
                             {/* Image - Each slide has its own unique image */}
                             <div className="md:w-1/2 h-64 md:h-auto relative overflow-hidden">
@@ -210,7 +211,7 @@ export default function FeaturedContent () {
                                     >
                                         <h2 className="text-2xl font-bold mb-4">{currentSlide.title}</h2>
                                         <p className="text-gray-300 mb-6">{currentSlide.subtitle}</p>
-                                        <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-[#0a3b4a] transition-colors">
+                                        <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-secondary transition-colors">
                                             See more
                                         </button>
                                     </motion.div>
@@ -224,13 +225,13 @@ export default function FeaturedContent () {
                                     <div className="flex gap-2">
                                         <button
                                             onClick={goToPrevSlide}
-                                            className="w-10 h-10 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-[#0a3b4a] transition-colors"
+                                            className="w-10 h-10 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"
                                         >
                                             <ChevronLeft className="w-5 h-5" />
                                         </button>
                                         <button
                                             onClick={goToNextSlide}
-                                            className="w-10 h-10 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-[#0a3b4a] transition-colors"
+                                            className="w-10 h-10 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"
                                         >
                                             <ChevronRight className="w-5 h-5" />
                                         </button>
@@ -238,18 +239,67 @@ export default function FeaturedContent () {
                                 </div>
 
                                 {/* Decorative circles */}
-                                <div className="absolute right-8 bottom-24 opacity-20">
-                                    <div className="w-32 h-32 border border-white rounded-full"></div>
-                                    <div className="w-24 h-24 border border-white rounded-full mt-[-6rem] ml-4"></div>
-                                    <div className="w-16 h-16 border border-white rounded-full mt-[-5rem] ml-8"></div>
+                                <div className="absolute -right-2 bottom-42 opacity-20">
+                                    {Array.from({length: 20}).map((_, index) => (
+                                        <div
+                                            key={index}
+                                            className="absolute border border-white rounded-full"
+                                            style={{
+                                                width: `${ 8 * (index + 1) }px`,
+                                                height: `${ 8 * (index + 1) }px`,
+                                                right: 0,
+                                                bottom: 0,
+                                                transform: 'translate(50%, 50%)',
+                                            }}
+                                        />
+                                    ))}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+
+                <div className="flex items-center gap-4 mb-8  ">
+                    <div className="flex">
+                        <motion.div
+                            ref={ref}
+                            initial={{x: -10, opacity: 0}}
+                            animate={isInView ? {x: 0, opacity: 1} : {}}
+                            transition={{duration: 0.3}}
+                        >
+                            <ChevronRight className="w-5 h-15  text-primary" />
+                        </motion.div>
+                        <motion.div
+                            ref={ref}
+                            initial={{x: -10, opacity: 0}}
+                            animate={isInView ? {x: 0, opacity: 1} : {}}
+                            transition={{duration: 0.3, delay: 0.1}}
+                        >
+                            <ChevronRight className="w-8 h-15  text-primary" />
+                        </motion.div>
+                        <motion.div
+                            ref={ref}
+                            initial={{x: -10, opacity: 0}}
+                            animate={isInView ? {x: 0, opacity: 1} : {}}
+                            transition={isInView ? {duration: 0.3, delay: 0.2} : {}}
+                        >
+                            <ChevronRight className="w-10 h-15 text-primary" />
+                        </motion.div>
+                        <motion.div
+                            ref={ref}
+                            initial={{x: -10, opacity: 0}}
+                            animate={isInView ? {x: 0, opacity: 1} : {}}
+                            transition={{duration: 0.3, delay: 0.3}}
+                        >
+                            <ChevronRight className=" w-12 h-15 font-light text-primary" />
+                        </motion.div>
+                    </div>
+                </div>
+
                 {/* Right side content */}
-                <div className="lg:w-1/2">
+                <div className="lg:w-1/2 hidden md:block">
                     <AnimatePresence mode="wait">
                         <motion.h1
                             key={`${ activeTab }-heading`}
@@ -257,37 +307,12 @@ export default function FeaturedContent () {
                             animate={{opacity: 1, y: 0}}
                             exit={{opacity: 0, y: -10}}
                             transition={{duration: 0.5}}
-                            className="text-4xl md:text-5xl font-bold text-[#0a3b4a] mb-12"
+                            className="text-4xl md:text-5xl font-bold text-secondary mb-12"
                         >
                             {rightContent[activeTab].heading}
                         </motion.h1>
                     </AnimatePresence>
 
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="flex">
-                            <motion.div
-                                initial={{x: -10, opacity: 0}}
-                                animate={{x: 0, opacity: 1}}
-                                transition={{duration: 0.3}}
-                            >
-                                <ChevronRight className="w-8 h-8 text-[#8e2249]" />
-                            </motion.div>
-                            <motion.div
-                                initial={{x: -10, opacity: 0}}
-                                animate={{x: 0, opacity: 1}}
-                                transition={{duration: 0.3, delay: 0.1}}
-                            >
-                                <ChevronRight className="w-8 h-8 text-[#8e2249]" />
-                            </motion.div>
-                            <motion.div
-                                initial={{x: -10, opacity: 0}}
-                                animate={{x: 0, opacity: 1}}
-                                transition={{duration: 0.3, delay: 0.2}}
-                            >
-                                <ChevronRight className="w-8 h-8 text-[#8e2249]" />
-                            </motion.div>
-                        </div>
-                    </div>
 
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -317,7 +342,7 @@ export default function FeaturedContent () {
                                     animate={{opacity: 1, y: 0}}
                                     exit={{opacity: 0, y: -10}}
                                     transition={{duration: 0.5, delay: 0.1}}
-                                    className="text-[#0a3b4a] text-lg"
+                                    className="text-secondary text-lg"
                                 >
                                     {rightContent[activeTab].description}
                                 </motion.p>

@@ -1,7 +1,6 @@
 import StatCard from "./StatsCard"
 
 function StatisticsSection () {
-    // Data for the statistics cards
     const stats = [
         {
             id: 1,
