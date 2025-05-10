@@ -54,11 +54,8 @@ export default function AboutUS () {
                             effectively towards itself, community and country projects.
                         </p>
                     </div>
-
-
                 </div>
             </section>
-
         </div>
     )
 }
