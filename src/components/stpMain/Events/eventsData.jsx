@@ -119,8 +119,8 @@ const eventSData = [
   },
   {
     id: 2,
-    title: "Machathon 6.00",
-    location: "ITI New Capital Branch",
+    title: "Juniors Pioneers",
+    location: "Creativa Cairo university Branch",
     image: juniorsEvent,
     formLink: "https://forms.gle/WJ3Pb7rdrMFsMJQZA",
     description:
