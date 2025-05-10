@@ -7,7 +7,7 @@ export default function AboutUS () {
         <div className='md:container px-5'>
             <section className='flex flex-col gap-12'>
 
-                <div className='bg-gray-100 p-4 my-2 rounded-e-lg w-4/5 border-s-4 border-primary  '>
+                <div className='bg-gray-100 p-4 my-2 rounded-e-lg  border-s-4 border-primary  '>
                     <MainHeading>
                         About Us
                     </MainHeading>
@@ -45,7 +45,7 @@ export default function AboutUS () {
                             <div className="bg-primary p-3 rounded-full mr-4">
                                 <Award className="h-6 w-6 text-white" />
                             </div>
-                            <h2 className="text-3xl font-bold text-white">Our Vision</h2>
+                            <h2 className="text-3xl font-bold text-white">Our Mission</h2>
                         </div>
                         <div className="w-16 h-1 bg-white mb-6"></div>
                         <p className="text-white leading-relaxed text-lg">

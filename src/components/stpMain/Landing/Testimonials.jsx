@@ -20,7 +20,7 @@ const testimonials = [
         alt: "person"
     },
     {
-        id: 1,
+        id: 2,
         img: Person2,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.",
         alt: "person"
