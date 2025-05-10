@@ -8,6 +8,7 @@ import company7 from "../../../assets/code_quests_logo.jpg"
 import company8 from "../../../assets/company2.jpg"
 import company9 from "../../../assets/company4.jpg"
 import company10 from "../../../assets/company5.webp"
+import MainHeading from './../../common/MainHeading';
 
 
 const previousPartners = [
@@ -69,7 +70,7 @@ const CircleGrid = () => {
     // const circles = Array.from({length: 14}, (_, i) => i)
     return (
         <section className="py-25 container">
-            <h2 className="text-3xl md:text-5xl font-bold mb-18 text-secondary ">previous partners</h2>
+            <MainHeading>previous partners</MainHeading>
             <div className=" my-8">
                 <div className="grid grid-cols-7 gap-4 md:gap-6 lg:gap-8">
                     {previousPartners.map((company, index) => (

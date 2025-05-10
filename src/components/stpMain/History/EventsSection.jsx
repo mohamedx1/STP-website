@@ -4,6 +4,7 @@ import Pic2 from '../../../assets/Committees2.png'
 import Pic3 from '../../../assets/Awards1.png'
 import Pic4 from '../../../assets/Slider3.png'
 import {ChevronLeft, ChevronRight} from "lucide-react"
+import MainHeading from "../../common/MainHeading"
 
 
 const events = [
@@ -45,8 +46,7 @@ export default function EventsSection () {
 
     return (
         <div className="md:container my-10 ">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-secondary">Our Events</h2>
-
+            <MainHeading>Our Events</MainHeading>
             <div className="relative">
                 <div className="bg-primary text-white rounded-lg overflow-hidden">
                     <div className="flex flex-col md:flex-row ">

@@ -1,4 +1,5 @@
 import {section, title} from "framer-motion/client"
+import MainHeading from './../../common/MainHeading';
 
 // Separate icon components to avoid hydration issues
 const TrophyIcon = () => (
@@ -105,7 +106,7 @@ function MachathonTimeline () {
 
     return (
         <section className="container">
-            <h2 className="  text-3xl md:text-5xl font-bold mb-8 text-secondary">Machathon  Timeline</h2>
+            <MainHeading>Machathon  Timeline</MainHeading>
             <div className=" relative  my-56">
                 {/* Main horizontal line */}
                 <div className="absolute h-0.5 bg-gray-300 top-1/2 left-0 right-0 transform  -translate-y-1/2 hidden md:block  "></div>

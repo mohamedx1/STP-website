@@ -6,10 +6,11 @@ function HeroSection () {
             <main className="  md:container ">
                 <section className="max-w-2xl   ">
                     <h1 className="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-                        Forem ipsum dolor sit amet consectetur
+                        STP – Steps Towards Progress
                     </h1>
                     <p className="mb-8 text-lg text-white/90 md:text-xl">
-                        Hidden gems breathtaking views, unforgettable adventures: where will you go next
+                        Being a leading organization working on developing
+                        youth who will lead the positive change.
                     </p>
                     <a
                         href="/explore"

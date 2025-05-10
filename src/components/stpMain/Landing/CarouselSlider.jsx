@@ -7,6 +7,7 @@ import Slider1 from "../../../assets/Slider1.png"
 import Slider2 from "../../../assets/Slider2.png"
 import Slider3 from "../../../assets/Slider3.png"
 import MobileCarousel from '../../common/MobileCarousel';
+import MainHeading from "../../common/MainHeading"
 // Sample data - replace with your actual data
 const slides = [
     {
@@ -184,7 +185,9 @@ export default function CarouselSlider () {
 
     return (
         <div className=" container  my-20 py-16  flex justify-center flex-col overflow-hidden">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-secondary">Our Projects</h2>
+            <MainHeading>
+                Our Projects
+            </MainHeading>
             <div className="flex justify-between my-12">
                 <div className="flex h-2 w-4/12 bg-gray-300 rounded-3xl  mb-4 mx-auto md:mx-0">
                     {slides.map((tab) => (

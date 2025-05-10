@@ -10,6 +10,7 @@ import uiux from "../../../assets/uiux.png"
 import frontEnd from "../../../assets/frontEnd.jpg"
 import frontProject from "../../../assets/FrontProject.jpg"
 import {useRef} from "react";
+import MainHeading from "../../common/MainHeading"
 
 
 
@@ -150,7 +151,7 @@ export default function FeaturedContent () {
 
     return (
         <div className="md:container ">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-secondary">Our Committees</h2>
+            <MainHeading>Our Committees</MainHeading>
             <div className="flex md:flex-col flex-col-reverse lg:flex-row gap-8">
                 <div className="lg:w-1/2  flex items-center">
                     {/* Featured Card */}

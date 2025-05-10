@@ -1,3 +1,4 @@
+import MainHeading from "../../common/MainHeading"
 import ProjectCarousel from "./ProjectCarousel"
 
 function ProjectsSection () {
@@ -6,8 +7,7 @@ function ProjectsSection () {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 {/* Left Column - Text and Stats */}
                 <div className="space-y-6">
-                    <h2 className="text-4xl font-bold text-secondary">Our Projects</h2>
-
+                    <MainHeading>Our Projects</MainHeading>
                     <p className="text-secondary text-lg ">
                         Success is not just about reaching a destination; it's about the journey, the challenges overcome Success is
                         not just about reaching a destination; it's about the journey, the challenges overcome Success is not just

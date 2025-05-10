@@ -6,6 +6,7 @@ import Pic2 from '../../../assets/Slider1.png';
 import Pic3 from '../../../assets/Awards1.png';
 import Pic4 from '../../../assets/Slider3.png';
 import Pic5 from '../../../assets/Slider2.png';
+import MainHeading from "../../common/MainHeading";
 
 function PhotographyAwards () {
     // Award entries data with content
@@ -86,9 +87,9 @@ function PhotographyAwards () {
     }
 
     return (
-        <div className="my-25 ">
+        <div className="my-10 ">
             <div className=" ">
-                <h2 className=" container text-3xl md:text-5xl font-bold mb-8 text-secondary">Our History</h2>
+                <MainHeading>Our History</MainHeading>
                 {/* Responsive container - flex-col on small screens, flex-row on md and up */}
                 <div className="flex flex-col md:flex-row  rounded-lg overflow-hidden">
                     {/* Awards Panel - full width on small screens, 40% width on md and up */}
