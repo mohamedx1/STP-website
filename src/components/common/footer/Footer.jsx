@@ -2,7 +2,7 @@ import Footer1 from '../../../assets/footer1.png';
 import Facebook from '../../../assets/Facebook.png';
 import Twitter from '../../../assets/Twitter.png';
 import Instagram from '../../../assets/Instagram.png';
-import LOGO from '../../../assets/Logo.png';
+import LOGO from '../../../assets/LOGO.png';
 import Send from '../../../assets/send.png';
 function Footer () {
     return (
