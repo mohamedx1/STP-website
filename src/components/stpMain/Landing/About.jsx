@@ -2,11 +2,10 @@ import React from 'react'
 import MainHeading from '../../common/MainHeading'
 import {Award, Compass} from 'lucide-react';
 
-export default function AboutUs () {
+export default function About () {
     return (
         <div className='md:container px-5'>
             <section className='flex flex-col gap-12'>
-
                 <div className='bg-gray-100 p-4 my-2 rounded-e-lg  border-s-4 border-primary  '>
                     <MainHeading>
                         About Us

@@ -4,12 +4,13 @@ import PhotographyAwards from '../components/stpMain/Landing/PhotographyAwards';
 import CarouselSlider from '../components/stpMain/Landing/CarouselSlider';
 import Committees from '../components/stpMain/Landing/Committees';
 import Testimonials from '../components/stpMain/Landing/Testimonials';
+import About from '../components/stpMain/Landing/About';
 
 export default function Landing () {
   return (
     <>
       <HeroSection />
-      {/* <AboutUs /> */}
+      <About />
       <PhotographyAwards />
       <CarouselSlider />
       <Committees />
