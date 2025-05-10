@@ -28,7 +28,7 @@ export default function MobileCarousel ({slides, setCurrentIndex}) {
 
             </div>
 
-            <div className="flex justify-center w-full gap-4 mt-10">
+            <div className="flex justify-evenly w-full  mt-10">
                 <button
                     onClick={prev}
                     className="w-15 h-15 rounded-full bg-primary hover:bg-secondary transition-all text-white flex items-center justify-center cursor-pointer"

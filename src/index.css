@@ -18,6 +18,13 @@
 :root {
   font-family: "Roboto", "sans-serif";
 }
+
+pre {
+  display: block;
+  font-family: inherit;
+  white-space: inherit;
+  margin: 1em 0;
+}
 @media screen and (min-width: 360px) {
   html {
     font-size: 10px;
@@ -124,7 +131,8 @@
 @media (max-width: 1024px) {
   .footer-b,
   .footer-t {
-    position: initial;
+    position: unset;
+    display: none;
   }
 }
 
@@ -261,4 +269,11 @@
   .slide-card {
     flex: 0 0 calc(33.333% - 20px);
   }
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+
+.eventCover {
+  background-position: top;
+  background-size: cover;
 }

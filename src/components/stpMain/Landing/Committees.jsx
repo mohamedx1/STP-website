@@ -4,7 +4,11 @@ import {useState} from "react"
 import {ChevronLeft, ChevronRight} from "lucide-react"
 import {motion, AnimatePresence, useInView} from "framer-motion"
 import CommitteesImg from "../../../assets/Committees.png"
-import podcast from "../../../assets/podcast.png"
+import backend from "../../../assets/backEnd.jpg"
+import backProject from "../../../assets/backendProject.jpg"
+import uiux from "../../../assets/uiux.png"
+import frontEnd from "../../../assets/frontEnd.jpg"
+import frontProject from "../../../assets/FrontProject.jpg"
 import {useRef} from "react";
 
 
@@ -14,98 +18,57 @@ import {useRef} from "react";
 // Sample data for committees tab - each slide has its own unique image
 const committeesSlides = [
     {
+        id: 0,
+        image: frontEnd,
+        projectImage: frontProject,
+        title: "Front End",
+        subtitle: "Build responsive user interfaces using modern frameworks like React.",
+        about: "The Front End committee focuses on designing and implementing web interfaces that are accessible, responsive, and visually appealing.",
+        goals: "Master HTML, CSS, JavaScript, and frameworks like React and Tailwind CSS to build production-ready front-end applications.",
+        achievements: ["Built an e-commerce UI", "Mastered React hooks", "Deployed a portfolio site", "Contributed to open source"]
+    },
+    {
         id: 1,
-        title: "Committees: Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        subtitle: "Committee meeting highlights and updates",
-        image: CommitteesImg,
+        image: backend,
+        projectImage: backProject,
+        title: "Back End",
+        subtitle: "Design and develop robust APIs and services using modern back-end technologies.",
+        about: "The Back End committee teaches how to build, test, and deploy server-side applications.",
+        goals: "Understand databases, REST APIs, and authentication using tools like Node.js, Express, and PostgreSQL.",
+        achievements: ["Built a REST API", "Handled JWT auth", "Integrated PostgreSQL", "Created scalable services"]
     },
     {
         id: 2,
-        title: "Committees: Fusce vehicula dolor arcu, sit amet blandit dolor.",
-        subtitle: "Latest committee decisions and announcements",
-        image: CommitteesImg,
+        image: uiux,
+        projectImage: frontProject,
+        title: "UI/UX Design",
+        subtitle: "Design user-centered experiences and intuitive interfaces.",
+        about: "This committee covers user research, wireframing, prototyping, and testing to ensure a smooth user experience.",
+        goals: "Learn tools like Figma and Adobe XD, and apply design thinking to real-world problems.",
+        achievements: ["Created wireframes", "Built interactive prototypes", "Conducted usability testing", "Redesigned user flows"]
     },
     {
         id: 3,
-        title: "Committees: Suspendisse potenti nullam ac tortor vitae purus.",
-        subtitle: "Committee structure and organization",
         image: CommitteesImg,
+        projectImage: backProject,
+        title: "Machine Learning",
+        subtitle: "Explore the world of data, algorithms, and AI.",
+        about: "This committee introduces ML concepts, from supervised learning to neural networks.",
+        goals: "Use Python, scikit-learn, and TensorFlow to build and train ML models.",
+        achievements: ["Trained a model", "Built a spam classifier", "Participated in Kaggle", "Presented a data analysis project"]
     },
     {
         id: 4,
-        title: "Committees: Eget est lorem ipsum dolor sit amet consectetur.",
-        subtitle: "Upcoming committee events and meetings",
         image: CommitteesImg,
-    },
-    {
-        id: 5,
-        title: "Committees: Viverra orci sagittis eu volutpat odio facilisis.",
-        subtitle: "Committee resources and documentation",
-        image: CommitteesImg,
-    },
-]
+        projectImage: CommitteesImg,
+        title: "Cybersecurity",
+        subtitle: "Learn to protect systems and data from digital attacks.",
+        about: "Understand basic and advanced topics in digital security and ethical hacking.",
+        goals: "Get hands-on with encryption, penetration testing, and security best practices.",
+        achievements: ["Completed CTF challenges", "Audited security of a site", "Learned OWASP Top 10", "Created phishing simulations"]
+    }
+];
 
-
-// Sample data for podcast tab - each slide has its own unique image
-const podcastSlides = [
-    {
-        id: 1,
-        title: "Podcast: Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        subtitle: "Latest episode featuring special guests",
-        image: podcast,
-    },
-    {
-        id: 2,
-        title: "Podcast: Etiam non quam lacus suspendisse faucibus interdum.",
-        subtitle: "Deep dive into industry trends",
-        image: podcast,
-    },
-    {
-        id: 3,
-        title: "Podcast: Viverra maecenas accumsan lacus vel facilisis volutpat.",
-        subtitle: "Exclusive interview with thought leaders",
-        image: podcast,
-    },
-    {
-        id: 4,
-        title: "Podcast: Amet consectetur adipiscing elit duis tristique.",
-        subtitle: "Panel discussion on emerging technologies",
-        image: podcast,
-    },
-    {
-        id: 5,
-        title: "Podcast: Tortor dignissim convallis aenean et tortor at risus.",
-        subtitle: "Behind the scenes of our production process",
-        image: podcast,
-    },
-    {
-        id: 5,
-        title: "Podcast: Tortor dignissim convallis aenean et tortor at risus.",
-        subtitle: "Behind the scenes of our production process",
-        image: podcast,
-    },
-]
-
-// Tab configuration
-const tabs = [
-    {id: "committees", label: "committees", totalSlides: committeesSlides.length},
-    {id: "podcast", label: "podcast", totalSlides: podcastSlides.length},
-]
-
-// Right side content for each tab
-const rightContent = {
-    committees: {
-        heading: "Podcast episodes and highlights",
-        image: podcast,
-        description:
-            "Podcast episodes featuring in-depth discussions, interviews, and analysis on the latest topics and trends.",
-    },
-    podcast: {
-        heading: "Committees information and updates",
-        image: CommitteesImg,
-        description: "Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum.",
-    },
-}
 
 export default function FeaturedContent () {
     const [activeTab, setActiveTab] = useState("committees")
@@ -113,36 +76,25 @@ export default function FeaturedContent () {
     const isInView = useInView(ref, {once: true});
     // Separate current slide state for each tab
     const [committeeSlideIndex, setCommitteeSlideIndex] = useState(0)
-    const [podcastSlideIndex, setPodcastSlideIndex] = useState(0)
+
 
     // Get current slide index based on active tab
-    const currentSlideIndex = activeTab === "committees" ? committeeSlideIndex : podcastSlideIndex
+    const currentSlideIndex = committeeSlideIndex
 
     // Get slides based on active tab
-    const slides = activeTab === "committees" ? committeesSlides : podcastSlides
+    const slides = committeesSlides
 
     // Get total slides based on active tab
     const totalSlides = slides.length
 
     const goToPrevSlide = () => {
-        if (activeTab === "committees") {
-            setCommitteeSlideIndex((prev) => (prev === 0 ? committeesSlides.length - 1 : prev - 1))
-        } else {
-            setPodcastSlideIndex((prev) => (prev === 0 ? podcastSlides.length - 1 : prev - 1))
-        }
+        setCommitteeSlideIndex((prev) => (prev === 0 ? committeesSlides.length - 1 : prev - 1))
     }
 
     const goToNextSlide = () => {
-        if (activeTab === "committees") {
-            setCommitteeSlideIndex((prev) => (prev === committeesSlides.length - 1 ? 0 : prev + 1))
-        } else {
-            setPodcastSlideIndex((prev) => (prev === podcastSlides.length - 1 ? 0 : prev + 1))
-        }
-    }
 
-    // Handle tab change
-    const handleTabChange = (tabId) => {
-        setActiveTab(tabId)
+        setCommitteeSlideIndex((prev) => (prev === committeesSlides.length - 1 ? 0 : prev + 1))
+
     }
 
     // Get current slide
@@ -162,29 +114,50 @@ export default function FeaturedContent () {
         exit: {opacity: 0, scale: 0.95, transition: {duration: 0.3}},
     }
 
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <div className="flex flex-col lg:flex-row gap-8">
-                <div className="lg:w-1/2">
-                    {/* Tabs */}
-                    <div className="flex gap-4 mb-6">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab.id}
-                                onClick={() => handleTabChange(tab.id)}
-                                className={`px-8 py-3 rounded-full text-base font-medium transition-colors ${ activeTab === tab.id ? "bg-primary text-white" : "bg-white text-secondary border border-gray-300"
-                                    }`}
-                            >
-                                {tab.label}
-                            </button>
-                        ))}
-                    </div>
 
+    const renderProjects = currentSlide.achievements.map((achivement, idx) => (
+        <motion.div
+            key={`${ idx }-bbb-${ currentSlideIndex + 1 }-map`}
+            initial={{opacity: 0, y: 10}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: -10}}
+            transition={{duration: 0.5, delay: 0.8}}
+        >
+            <p
+                className=" text-lg bg-gray-100 px-4 py-2 rounded-lg"
+            >
+                {"#" + achivement}
+            </p>
+        </motion.div>
+    ))
+
+
+    const renderCircles = Array.from({length: 20}).map((_, index) => (
+        <div
+            key={index}
+            className="absolute border border-white rounded-full"
+            style={{
+                width: `${ 8 * (index + 1) }px`,
+                height: `${ 8 * (index + 1) }px`,
+                right: 0,
+                bottom: 0,
+                transform: 'translate(50%, 50%)',
+            }}
+        />
+    ))
+
+
+
+    return (
+        <div className="md:container ">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-secondary">Our Committees</h2>
+            <div className="flex md:flex-col flex-col-reverse lg:flex-row gap-8">
+                <div className="lg:w-1/2  flex items-center">
                     {/* Featured Card */}
-                    <div className="relative rounded-lg overflow-hidden bg-secondary text-white">
+                    <div className="relative w-full rounded-lg overflow-hidden bg-secondary text-white">
                         <div className="flex flex-col md:flex-row">
                             {/* Image - Each slide has its own unique image */}
-                            <div className="md:w-1/2 h-64 md:h-auto relative overflow-hidden">
+                            <div className="md:w-1/2  h-96  relative overflow-hidden md:block hidden ">
                                 <AnimatePresence mode="wait">
                                     <motion.img
                                         key={`${ activeTab }-image-${ currentSlideIndex }`}
@@ -240,30 +213,18 @@ export default function FeaturedContent () {
 
                                 {/* Decorative circles */}
                                 <div className="absolute -right-2 bottom-42 opacity-20">
-                                    {Array.from({length: 20}).map((_, index) => (
-                                        <div
-                                            key={index}
-                                            className="absolute border border-white rounded-full"
-                                            style={{
-                                                width: `${ 8 * (index + 1) }px`,
-                                                height: `${ 8 * (index + 1) }px`,
-                                                right: 0,
-                                                bottom: 0,
-                                                transform: 'translate(50%, 50%)',
-                                            }}
-                                        />
-                                    ))}
+                                    {renderCircles}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-
-                <div className="flex items-center gap-4 mb-8  ">
+                {/* arrows */}
+                <div className=" items-center gap-4 mb-8 flex   ">
                     <div className="flex">
                         <motion.div
+                            key={`${ activeTab }-one-${ currentSlideIndex }`}
                             ref={ref}
                             initial={{x: -10, opacity: 0}}
                             animate={isInView ? {x: 0, opacity: 1} : {}}
@@ -273,6 +234,7 @@ export default function FeaturedContent () {
                         </motion.div>
                         <motion.div
                             ref={ref}
+                            key={`${ activeTab }-tow-${ currentSlideIndex }`}
                             initial={{x: -10, opacity: 0}}
                             animate={isInView ? {x: 0, opacity: 1} : {}}
                             transition={{duration: 0.3, delay: 0.1}}
@@ -280,6 +242,7 @@ export default function FeaturedContent () {
                             <ChevronRight className="w-8 h-15  text-primary" />
                         </motion.div>
                         <motion.div
+                            key={`${ activeTab }-three-${ currentSlideIndex }`}
                             ref={ref}
                             initial={{x: -10, opacity: 0}}
                             animate={isInView ? {x: 0, opacity: 1} : {}}
@@ -288,6 +251,7 @@ export default function FeaturedContent () {
                             <ChevronRight className="w-10 h-15 text-primary" />
                         </motion.div>
                         <motion.div
+                            key={`${ activeTab }-four-${ currentSlideIndex }`}
                             ref={ref}
                             initial={{x: -10, opacity: 0}}
                             animate={isInView ? {x: 0, opacity: 1} : {}}
@@ -299,53 +263,72 @@ export default function FeaturedContent () {
                 </div>
 
                 {/* Right side content */}
-                <div className="lg:w-1/2 hidden md:block">
+                <div className="lg:w-1/2 mx-4 ">
                     <AnimatePresence mode="wait">
                         <motion.h1
-                            key={`${ activeTab }-heading`}
+                            key={`${ activeTab }-content-${ currentSlideIndex }`}
                             initial={{opacity: 0, y: 10}}
                             animate={{opacity: 1, y: 0}}
                             exit={{opacity: 0, y: -10}}
                             transition={{duration: 0.5}}
-                            className="text-4xl md:text-5xl font-bold text-secondary mb-12"
+                            className="text-2xl md:text-3xl font-bold text-secondary-200 mb-12"
                         >
-                            {rightContent[activeTab].heading}
+                            {currentSlide.title}
                         </motion.h1>
                     </AnimatePresence>
 
 
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={`${ activeTab }-right-content`}
+                            key={`${ currentSlide }-right-content`}
                             initial={{opacity: 0}}
                             animate={{opacity: 1}}
                             exit={{opacity: 0}}
                             transition={{duration: 0.5}}
-                            className="flex flex-col md:flex-row gap-6"
+                            className="flex flex-col  gap-6"
                         >
-                            <div className="md:w-1/2">
+                            <div className="">
                                 <motion.img
-                                    key={`${ activeTab }-right-image`}
+                                    key={`${ activeTab }-img-${ currentSlideIndex }`}
                                     initial={{opacity: 0, scale: 1.05}}
                                     animate={{opacity: 1, scale: 1}}
                                     exit={{opacity: 0}}
-                                    transition={{duration: 0.5}}
-                                    src={rightContent[activeTab].image}
-                                    alt={activeTab === "committees" ? "Committee" : "Podcast"}
-                                    className="w-full h-60 object-cover rounded-lg"
+                                    transition={{duration: 0.2}}
+                                    src={currentSlide.projectImage}
+                                    alt={currentSlide.title}
+                                    className=" h-60 w-4/5 object-cover shadow-2xl "
                                 />
                             </div>
-                            <div className="md:w-1/2">
+                            <div className="text-secondary">
+                                <span className="font-bold">About: </span>
+
                                 <motion.p
-                                    key={`${ activeTab }-right-text`}
+                                    key={`${ activeTab }-about-${ currentSlideIndex }`}
                                     initial={{opacity: 0, y: 10}}
                                     animate={{opacity: 1, y: 0}}
                                     exit={{opacity: 0, y: -10}}
-                                    transition={{duration: 0.5, delay: 0.1}}
-                                    className="text-secondary text-lg"
+                                    transition={{duration: 0.5, delay: 0.4}}
+                                    className=" text-lg mb-2"
                                 >
-                                    {rightContent[activeTab].description}
+                                    {currentSlide.about}
                                 </motion.p>
+                                <span className="font-bold">Goals: </span>
+                                <motion.p
+                                    key={`${ activeTab }-goals-${ currentSlideIndex }`}
+                                    initial={{opacity: 0, y: 10}}
+                                    animate={{opacity: 1, y: 0}}
+                                    exit={{opacity: 0, y: -10}}
+                                    transition={{duration: 0.5, delay: 0.6}}
+                                    className=" text-lg"
+                                >
+                                    {currentSlide.goals}
+                                </motion.p>
+                                <span className="font-bold ">Achievements: </span>
+                                <div className="flex flex-wrap gap-4 ">
+                                    {renderProjects}
+                                </div>
+
+
                             </div>
                         </motion.div>
                     </AnimatePresence>

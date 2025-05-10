@@ -1,6 +1,7 @@
 import {useState} from "react"
 import {Menu, X} from "lucide-react"
 import Logo from "../Logo"
+import {Link} from "react-router-dom"
 
 function NavBar () {
     const [isOpen, setIsOpen] = useState(false)
@@ -19,12 +20,12 @@ function NavBar () {
                     <ul className="flex space-x-0 lg:space-x-9 md:space-x-3 rounded-full bg-black/20 px-3 py-2 backdrop-blur-sm">
                         {navItems.map((item) => (
                             <li key={item}>
-                                <a
-                                    href={`/${ item.toLowerCase() }`}
+                                <Link
+                                    to={`/${ item.toLowerCase() }`}
                                     className="px-2 md:px-4 py-2 text-white rounded-full hover:bg-black/30"
                                 >
                                     {item}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
