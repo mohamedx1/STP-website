@@ -129,9 +129,12 @@ pre {
 }
 
 @media (max-width: 1024px) {
-  .footer-b,
-  .footer-t {
-    position: unset;
+  .footer-b::before,
+  .footer-t::before {
+    display: none;
+  }
+  .footer-b::after,
+  .footer-t::after {
     display: none;
   }
 }
